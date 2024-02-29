@@ -14,14 +14,15 @@ function loadRepos() {
 		return res.json();
 	}
 	function onSuccess(data) {
+		console.log(data[0]);
 	list.replaceChildren(...data.map(createListItem));
+	console.log(data)
 
 	}
 	function onError(error) {
 		list.textContent = error;
 	}
-
-	function createListItem({html_url,full_name}) {
+ 	function createListItem({html_url,full_name}) {
 		let li = document.createElement("li");
 		let a = document.createElement("a");
 		a.href = html_url;
