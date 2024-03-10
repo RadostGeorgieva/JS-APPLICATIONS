@@ -1,8 +1,8 @@
 
 let url = 'http://localhost:3030/jsonstore/collections/books/'
-document.getElementById("loadBooks").addEventListener('click', letShowData);
+document.getElementById("loadBooks").addEventListener('click', showAllBooks);
 
-async function letShowData() {
+async function showAllBooks() {
 
     const response = await fetch(url);
     const data = await response.json();
@@ -52,9 +52,7 @@ function addEventListeners() {
     submit.addEventListener('click',submitBook);
 }
 async function submitBook(event) {
-    console.log("here");
     event.preventDefault();
-    debugger
     let formTitle = document.getElementsByClassName("submit")[0].children[2];
     console.log(formTitle);
     let formAuthor = document.getElementsByClassName("submit")[0].children[4];
@@ -70,7 +68,7 @@ async function submitBook(event) {
     formTitle.value = "";
     formAuthor.value = "";
     
-    letShowData();
+    showAllBooks();
 }
 async function deleteBtn(event) {
     event.preventDefault();
@@ -83,7 +81,7 @@ async function deleteBtn(event) {
         headers: { 'Content-type': 'application/json' },
     });
 
-    letShowData();
+    showAllBooks();
 }
 function editStart(event) {
     document.getElementsByClassName("edit")[0].style.display = "block";
@@ -119,7 +117,7 @@ function editStart(event) {
                 body: JSON.stringify({ "author": authorNew, "title": titleNew })
             });
 
-            letShowData();
+            showAllBooks();
             formTitle.value = "";
             formAuthor.value = "";
             document.getElementsByClassName("edit")[0].style.display = "none";
