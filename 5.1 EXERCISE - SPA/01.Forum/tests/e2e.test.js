@@ -99,10 +99,8 @@ describe('E2E tests', function () {
       await page.fill('.new-topic-content >> [name="postText"]', data.content);
 
       const [request] = await Promise.all([onRequest(), page.click('.public')]);
-      console.log(request);
 
       const postData = JSON.parse(request.postData());
-      console.log(postData);
       expect(postData.title).to.equal(data.title);
       expect(postData.username).to.equal(data.username);
       expect(postData.content).to.contains(data.content);

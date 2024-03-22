@@ -3,7 +3,7 @@ import { getSubmittedComments} from "./commentsView.js"
 
 
 export async function showDetails(event) {
-    console.log("mistake");
+   
     document.getElementsByClassName("new-topic-border")[0].style.display = "none";
     document.getElementsByClassName("topic-container")[0].style.display = "none";
     let idCurrent = event.target.parentElement.dataset.id;
