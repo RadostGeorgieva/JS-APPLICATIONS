@@ -27,7 +27,7 @@ const detailsTemp = (item, isOwner, visitors, isUserGoing,userId) => html`
              ${isOwner ? getButtons(item._id, isOwner) : ""}
              
               <!--Bonus - Only for logged-in users ( not authors )-->
-              ${!isOwner && userId?getGoingBtn(item._id, isOwner,isUserGoing) : ""}
+              ${!isOwner && userId?getGoingBtn(item._id,isUserGoing) : ""}
             </div>
           </div>
         </section>
@@ -39,7 +39,7 @@ function getButtons(id, isOwner) {
         <a href="/catalog/delete/${id}" id="delete-btn">Delete</a>
     `
 }
-function getGoingBtn(id, isAuthor,isUserGoing) {
+function getGoingBtn(id,isUserGoing) {
 return !isUserGoing ? html` <a @click=${() => { onClick(id) }} href="" id="go-btn">Going</a>` : "";
 }
 
@@ -52,7 +52,7 @@ export async function onClick(id) {
 
 export async function showDetailsView(ctx) {
 
-
+debugger
   const itemId = ctx.params.id;
   const item = await dataService.getEventDetails(itemId);
   let userId = userHelper.getUserId();
